@@ -8,13 +8,15 @@ interface ParallaxSectionProps {
   className?: string;
   strength?: number;
   gradientOverlay?: boolean;
+  id?: string; // Make sure id is in the props interface
 }
 
 export function ParallaxSection({ 
   children, 
   className = "",
   strength = 10,
-  gradientOverlay = true
+  gradientOverlay = true,
+  id // Accept the id prop
 }: ParallaxSectionProps) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -28,7 +30,8 @@ export function ParallaxSection({
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
-    <section ref={ref} className={`${className} overflow-hidden relative`}>
+    // Pass the id to the section element
+    <section id={id} ref={ref} className={`${className} overflow-hidden relative`}>
       {gradientOverlay && (
         <div className="absolute inset-0 z-0 opacity-30 bg-gradient-to-b from-transparent via-white/30 to-transparent pointer-events-none"></div>
       )}

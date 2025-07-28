@@ -13,10 +13,55 @@ import Link from "next/link";
 import { FooterBackgroundDots } from "@/components/FooterBackgroundDots";
 
 export default function Home() {
+  // Add a scroll handler function for smooth scrolling
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <div className="font-sans min-h-screen overflow-hidden bg-gradient-to-b from-blue-50 to-blue-100">
+      {/* Navbar with Logo */}
+      <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <Image 
+                src="/WhatsApp Image 2025-07-28 at 12.37.05 PM.jpeg" 
+                alt="ADAM Logo" 
+                width={150} 
+                height={50}
+                className="h-12 w-auto"
+                priority
+              />
+            </div>
+            <nav className="hidden md:flex items-center space-x-6">
+              <Link href="#" className="text-blue-900 hover:text-blue-600 font-medium">Home</Link>
+              <Link href="#services" onClick={(e) => {e.preventDefault(); scrollToSection('services');}} className="text-blue-900 hover:text-blue-600 font-medium">Services</Link>
+              <Link href="#about" onClick={(e) => {e.preventDefault(); scrollToSection('about');}} className="text-blue-900 hover:text-blue-600 font-medium">About Us</Link>
+              <Link href="#case-studies" onClick={(e) => {e.preventDefault(); scrollToSection('case-studies');}} className="text-blue-900 hover:text-blue-600 font-medium">Case Studies</Link>
+              <Button size="sm" variant="blue" onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSdAwNBONpL5Y0Upybmng_wZxkHp2Dih108eIOcu4ysBVDIiBw/viewform?usp=sharing&ouid=101813523552241469946", "_blank")}>
+                Contact Us
+              </Button>
+            </nav>
+            <div className="md:hidden">
+              <Button variant="ghost" size="sm">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-100 via-white to-blue-50">
+      <section className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-100 via-white to-blue-50">
         <div className="absolute w-full h-full">
           <AnimatedSvg colorScheme="blue" />
         </div>
@@ -30,19 +75,30 @@ export default function Home() {
             className="text-center"
           >
             <AnimatedText 
-              text="Advancing Radiology Excellence" 
+              text="Advancing Medical Excellence" 
               className="text-5xl md:text-7xBool font-bold text-blue-950 mb-6" 
             />
             <p className="text-xl md:text-2xl text-blue-900 mb-8 max-w-2xl mx-auto font-medium">
               Strategic consulting for radiology practices, imaging centers, and healthcare technology partners to optimize operations and enhance patient care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="blue" className="shadow-lg">
-                Schedule a Consultation
-              </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                Explore Our Solutions
-              </Button>
+            <Link
+    href="https://docs.google.com/forms/d/e/1FAIpQLSdAwNBONpL5Y0Upybmng_wZxkHp2Dih108eIOcu4ysBVDIiBw/viewform?usp=sharing&ouid=101813523552241469946"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Button size="lg" variant="blue" className="shadow-lg">
+      Schedule a Consultation
+    </Button>
+  </Link>
+  <Button 
+    size="lg" 
+    variant="outline" 
+    className="border-blue-600 text-blue-600 hover:bg-blue-50"
+    onClick={() => scrollToSection('services')}
+  >
+    Explore Our Solutions
+  </Button>
             </div>
           </motion.div>
         </div>
@@ -67,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Services Section as Timeline */}
-      <ParallaxSection className="relative py-20 bg-gradient-to-b from-blue-100 to-blue-200" strength={20}>
+      <ParallaxSection id="services" className="relative py-20 bg-gradient-to-b from-blue-100 to-blue-200" strength={20}>
         <BackgroundAccents colorTheme="blue" />
         <div className="container mx-auto px-4">
           <motion.div
@@ -146,12 +202,12 @@ export default function Home() {
                         <ul className="mt-4 space-y-2">
                           {index === 0 ? [
                             "Workflow optimization & productivity enhancement",
-                            "Staff scheduling & resource allocation models",
-                            "Financial performance & reimbursement strategy"
+                            " Staff scheduling & resource allocation models",
+                            " Financial performance & reimbursement strategy"
                           ] : index === 1 ? [
                             "Vendor-neutral technology assessment & selection",
-                            "PACS/RIS implementation & migration support",
-                            "AI & advanced visualization integration"
+                            " PACS/RIS implementation & migration support",
+                            " AI & advanced visualization integration"
                           ] : [
                             "EMR/EHR integration with imaging systems",
                             "Interoperability & data exchange solutions",
@@ -181,7 +237,7 @@ export default function Home() {
       </ParallaxSection>
 
       {/* About Us Section */}
-      <ParallaxSection className="relative py-20 bg-gradient-to-br from-blue-200 to-blue-300" strength={15}>
+      <ParallaxSection id="about" className="relative py-20 bg-gradient-to-br from-blue-200 to-blue-300" strength={15}>
         <BackgroundAccents variant="secondary" colorTheme="blue" />
         <div className="container mx-auto px-4">
           <motion.div
@@ -247,7 +303,7 @@ export default function Home() {
       </ParallaxSection>
 
       {/* Projects Section */}
-      <ParallaxSection className="relative py-20 bg-gradient-to-b from-blue-50 to-blue-100" strength={15}>
+      <ParallaxSection id="case-studies" className="relative py-20 bg-gradient-to-b from-blue-50 to-blue-100" strength={15}>
         <BackgroundAccents variant="primary" colorTheme="blue" />
         <div className="container mx-auto px-4">
           <motion.div
@@ -269,7 +325,7 @@ export default function Home() {
             <ProjectCard 
               client="Cloud-based PACS Company"
               title="OEM & HIMS Partnership Strategy"
-              image="/projects/healthcare-tech.jpg"
+              image="/full-pacs-cloud-02.png"
               points={[
                 "Designed and implemented a go-to-market partnership strategy with leading HIMS players across Tier 1 and Tier 2 hospital networks",
                 "Initiated OEM alliances with three major radiology equipment providers to enable bundled PAX-Hardware offerings",
@@ -285,7 +341,7 @@ export default function Home() {
             <ProjectCard 
               client="Multi-Hospital Radiology Group"
               title="Radiology Network Optimization"
-              image="/projects/network-management.jpg"
+              image="/selection-151-500x500.png"
               points={[
                 "Developed and implemented an AI-powered workload balancing system across a 12-hospital radiology network, reducing turnaround times by 32%",
                 "Created a centralized reading workflow that dynamically assigned cases based on subspecialty expertise, urgency, and radiologist availability",
@@ -324,7 +380,7 @@ export default function Home() {
         {/* Rest of the footer content */}
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-10">
-            {/* Company Information */}
+            {/* Company Information with updated logo */}
             <div className="col-span-1 lg:col-span-1">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -332,13 +388,15 @@ export default function Home() {
                 transition={{ duration: 0.7 }}
               >
                 <div className="mb-5 flex items-center">
-                  <Image
-                    src="/logo.svg"
-                    alt="Company Logo"
-                    width={120}
-                    height={40}
-                    className="h-10 invert mr-2"
-                  />
+                  <div className="bg-white p-2 rounded-lg mr-3">
+                    <Image
+                      src="/WhatsApp Image 2025-07-28 at 12.37.05 PM.jpeg"
+                      alt="ADAM Logo"
+                      width={100}
+                      height={40}
+                      className="h-10 w-auto"
+                    />
+                  </div>
                   <span className="text-xl font-bold">ADAM</span>
                 </div>
                 <p className="text-blue-100 mb-4">
@@ -356,14 +414,33 @@ export default function Home() {
               >
                 <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
                 <ul className="space-y-2">
-                  {['Home', 'Services', 'About', 'Case Studies', 'Contact'].map((item, i) => (
+                  {[
+                    { name: 'Home', id: '' },
+                    { name: 'Services', id: 'services' },
+                    { name: 'About', id: 'about' },
+                    { name: 'Case Studies', id: 'case-studies' },
+                    { name: 'Contact', id: '' }
+                  ].map((item, i) => (
                     <li key={i}>
-                      <Link href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-blue-100 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center">
-                        <svg className="w-3 h-3 mr-2 transition-transform duration-300 transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                        </svg>
-                        {item}
-                      </Link>
+                      {item.id ? (
+                        <a 
+                          href={`#${item.id}`}
+                          onClick={(e) => {e.preventDefault(); scrollToSection(item.id);}}
+                          className="text-blue-100 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center cursor-pointer"
+                        >
+                          <svg className="w-3 h-3 mr-2 transition-transform duration-300 transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                          </svg>
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link href="#" className="text-blue-100 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center">
+                          <svg className="w-3 h-3 mr-2 transition-transform duration-300 transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                          </svg>
+                          {item.name}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -383,20 +460,21 @@ export default function Home() {
                     <svg className="w-5 h-5 mr-2 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                     </svg>
-                    <span className="text-blue-100">+1 (555) 123-4567</span>
+                    <span className="text-blue-100">8639855425</span>
                   </li>
                   <li className="flex items-center">
                     <svg className="w-5 h-5 mr-2 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
-                    <span className="text-blue-100">contact@ADAM.com</span>
+                    <span className="text-blue-100">adityadb2016@gmail.com
+                    </span>
                   </li>
                   <li className="flex items-center">
                     <svg className="w-5 h-5 mr-2 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
-                    <span className="text-blue-100">123 Medical Center Avenue, Suite 100<br />Boston, MA 02115</span>
+                    <span className="text-blue-100">F-606, Phase-2,  Sector 62, Noida</span>
                   </li>
                 </ul>
               </motion.div>

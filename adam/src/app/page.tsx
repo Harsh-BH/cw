@@ -203,14 +203,14 @@ export default function Home() {
               { 
                 name: "Aditya Dubey", 
                 position: "Co-Founder & COO",
-                image: "/team/founder1.jpg",
+                image: "/1746442970883(1).jpg",
                 experience: "Prev: BCG, Unicorn India Ventures, London Business School",
                 keyCase: "Expertise: Radiology Practice Management, Medical Technology Strategy"
               },
               { 
                 name: "Aorkodeep Mandal", 
                 position: "Co-Founder & CEO",
-                image: "/team/founder2.jpg",
+                image: "/Screenshot 2025-07-28 at 2.51.04 AM.png",
                 experience: "Prev: BCG, Weekday AI (YC-21), Columbia Business School",
                 keyCase: "Expertise: Healthcare IT Systems, Imaging Informatics, AI Solutions"
               }

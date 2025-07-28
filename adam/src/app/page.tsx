@@ -201,12 +201,12 @@ export default function Home() {
                         <p className="text-blue-800 text-lg">{service.description}</p>
                         <ul className="mt-4 space-y-2">
                           {index === 0 ? [
-                            "Workflow optimization & productivity enhancement",
-                            " Staff scheduling & resource allocation models",
+                            "Workflow optimization & productivity enhancement,",
+                            " Staff scheduling & resource allocation models,",
                             " Financial performance & reimbursement strategy"
                           ] : index === 1 ? [
-                            "Vendor-neutral technology assessment & selection",
-                            " PACS/RIS implementation & migration support",
+                            "Vendor-neutral technology assessment & selection,",
+                            " PACS/RIS implementation & migration support,",
                             " AI & advanced visualization integration"
                           ] : [
                             "EMR/EHR integration with imaging systems",

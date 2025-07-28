@@ -34,9 +34,9 @@ export default function Home() {
               <Image 
                 src="/WhatsApp Image 2025-07-28 at 12.37.05 PM.jpeg" 
                 alt="ADAM Logo" 
-                width={150} 
-                height={50}
-                className="h-12 w-auto"
+                width={180} 
+                height={60}
+                className="h-14 w-auto"
                 priority
               />
             </div>
@@ -74,6 +74,27 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
+            {/* Add logo above the title with animation */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ 
+                duration: 0.8, 
+                type: "spring",
+                stiffness: 50,
+                delay: 0.3
+              }}
+              className="flex justify-center mb-10"
+            >
+              <Image 
+                src="/WhatsApp Image 2025-07-28 at 12.37.05 PM.jpeg" 
+                alt="ADAM Logo" 
+                width={280} 
+                height={100} 
+                className="h-auto w-auto max-h-36"
+              />
+            </motion.div>
+            
             <AnimatedText 
               text="Advancing Medical Excellence" 
               className="text-5xl md:text-7xBool font-bold text-blue-950 mb-6" 
@@ -392,9 +413,9 @@ export default function Home() {
                     <Image
                       src="/WhatsApp Image 2025-07-28 at 12.37.05 PM.jpeg"
                       alt="ADAM Logo"
-                      width={100}
-                      height={40}
-                      className="h-10 w-auto"
+                      width={120}
+                      height={50}
+                      className="h-12 w-auto"
                     />
                   </div>
                   <span className="text-xl font-bold">ADAM</span>
